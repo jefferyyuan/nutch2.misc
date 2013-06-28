@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+<configuration>
+	<property>
+		<name>storage.data.store.class</name>
+		<value>org.apache.gora.hbase.store.HBaseStore</value>
+		<description>Default class for storing data</description>
+	</property>
+
+	<property>
+		<name>plugin.includes</name>
+		<value>protocol-http|urlfilter-regex|ext-js-parser|parse-(html|tika|metatags)|index-(basic|static|metadata|anchor)|urlnormalizer-(pass|regex|basic)|scoring-opic|subcollection</value>
+		<description>Regular expression naming plugin directory names to
+  include.  Any plugin not matching this expression is excluded.
+  In any case you need at least include the nutch-extensionpoints plugin. By
+  default Nutch includes crawling just HTML and plain text via HTTP,
+  and basic indexing and search plugins. In order to use HTTPS please enable
+  protocol-httpclient, but be aware of possible intermittent problems with the
+  underlying commons-httpclient library.
+		</description>
+	</property>
+
+	<property>
+		<name>metatags.names</name>
+		<value>description;keywords;recommended;author;NotLikeKeywords;LikeKeywords;meta*;cv_page_group;metatag.ext.mainframe;metatag.ext.ignoreframe</value>
+	</property>
+
+	<property>
+		<name>index.parse.md</name>
+		<value>metatag.description,metatag.keywords,metatag.recommended,metatag.author,metatag.NotLikeKeywords,metatag.LikeKeywords,metatag.meta*,metatag.cv_page_group,metatag.ext.mainframe,metatag.ext.ignoreframe</value>
+		<description>
+          Comma-separated list of keys to be taken from the parse metadata to generate fields.
+          Can be used e.g. for 'description' or 'keywords' provided that these values are generated
+          by a parser (see parse-metatags plugin)
+		</description>
+	</property>
+	<property>
+		<name>ext.js.file.include.pattern</name>
+		<value>.*/tree_nodes.js</value>
+	</property>
+	<property>
+		<name>ext.js.absolute.url.pattern</name>
+		<value>^[http|https|www].*</value>
+	</property>
+	<property>
+		<name>ext.js.extract.outlink.pattern</name>
+		<value>\"([^\"]*.[htm|html|pdf])\"</value>
+	</property>
+	<property>
+		<name>ext.js.indexjs</name>
+		<value>false</value>
+	</property>
+
+</configuration>
